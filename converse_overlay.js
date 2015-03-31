@@ -2,11 +2,15 @@
 var twoOrMoreItems = function(){
   var cartCount = parseInt ($("#mini-cart").attr("icon-text-attr") );
   return cartCount >= 2;
-}
+};
 
 var getImgTags = function($cart){
   return $cart.find( ".item-image img");
-}
+};
+
+var styleOverlay = function($div){
+
+};
 
 
 var populateDiv = function($div){
@@ -20,12 +24,14 @@ var populateDiv = function($div){
           price.text( "$" + cy.VALUE );//modify for different currencies. cy is a var in hompage
           $div.append( images );
           $div.append( price );
+          styleOverlay($div);
           $('body').append( $div );
+
           console.log("SUCCESS!");
        }).fail( function(error){
           console.log("ERROR:\n" + error);
        });
-}
+};
 
 var generateOverlay= function(){
   if( twoOrMoreItems() ){
@@ -35,4 +41,4 @@ var generateOverlay= function(){
   } else {
     alert("Not enough items to trigger overlay!");
   }
-}
+};

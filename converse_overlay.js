@@ -8,6 +8,32 @@ var getCartTotal = function(){
   return parseFloat( cy.VALUE );
 }
 
-//Check to see if we have more than 2 items
-//pull elements from page
-//render overlay
+var getImgTags = function($cart){
+  return $cart.find( ".item-image img");
+}
+
+
+var populateDiv = function($div, totalPrice){
+  $.ajax( {      url: "/cart",
+                type: "get",
+            dataType: "html"
+          }
+       ).success( function(data){
+          var images = getImgTags( $(data) );
+          $div.append( images );
+          $('body').append( $div );
+          console.log("SUCCESS!");
+       }).fail( function(error){
+          console.log("ERROR:\n" + error);
+       });
+}
+
+var generateOverlay= function(){
+  if( twoOrMoreItems() ){
+    var total = getCartTotal();
+    var overlay = $("<div>");
+    populateDiv(overlay, total); //AJAX the cart page and populate the div
+  } else {
+    alert("Not enough items to trigger overlay!");
+  }
+}

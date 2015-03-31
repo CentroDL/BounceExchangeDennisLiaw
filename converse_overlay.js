@@ -20,8 +20,11 @@ var populateDiv = function($div, totalPrice){
           }
        ).success( function(data){
           var images = getImgTags( $(data) );
+          var price = $("<p>");
+          price.text( "$" + totalPrice );//modify for different currencies
           $div.append( images );
           $('body').append( $div );
+          $('body').append( price );
           console.log("SUCCESS!");
        }).fail( function(error){
           console.log("ERROR:\n" + error);

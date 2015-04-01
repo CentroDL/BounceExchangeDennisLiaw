@@ -1,22 +1,29 @@
 # Converse Ad Overlay
 
-Hello Bouncee Exchange! This is a solution to the code challenge Angela sent me. Below is the prompt for the problem: 
+Hello Bouncee Exchange! This is a solution to the code challenge Angela sent me. Below is the prompt for the problem:
 
 > Go to converse.com and add at least 2 products to your cart. Then return to the home page.
-> 
+>
 > Write a javascript snippet that can be run in the console of a browser that does the following:
-> 
-> Extract the number of items in the cart, the cart total, and item images from the page. Store them in javascript variables. 
-> 
+>
+> Extract the number of items in the cart, the cart total, and item images from the page. Store them in javascript variables.
+>
 > The trigger should show a centered overlay on top of the site that displays the information gathered above and two buttons. One button closes the overlay and the other takes the user to the cart page. It should have a style consistent with the website. Design matters.
-> 
+>
 > Behind the overlay add a semi-transparent black background that obscures the site. The overlay should be able to trigger multiple times if dismissed.
-> 
+>
 > BONUS
-> 
+>
 > 1. The overlay should only fire if the user is "logged in".
-> 
+>
 > 2. Describe some other ways you might be able to obtain the information needed for the overlay (think generally, not specific to THIS website).
+
+
+# To Run
+
+Copy and paste the code into your browser's javascript console, then run the command:
+
+generateOverlay()
 
 # The Apporach
 

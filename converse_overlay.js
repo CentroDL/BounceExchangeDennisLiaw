@@ -30,47 +30,50 @@ var styleContent = function($content){
                     'border-radius': '5px',
                           'padding': '15px'
                 });
+
+  $content.find("p").css({ "font-size": "24px",
+                              "margin": "15px 0px"
+                         });
 };
 
-var styleImages = function(){};
+var styleImages = function(){}; //stub just in case
 
 var styleButtons = function(){
-  $("#bouncex-buttons").css({ 'height': '150px'});
-  $(".bouncex-btn").css({  "width":"150%",
-                          "height": "150%",
-                         "display": "inline",
-                          "margin": "20px 15px"
+  $(".bouncex-btn").css({    'margin': '20px 20px',
+                          'vertical-align': 'middle',
+                          'height': '25px',
+                          'display': 'inline-block',
+                          'padding': '15px',
+                          'font-size': '24px',
+                          'text-align': 'center',
+                          'color': 'white',
+                          'background-color': 'black',
+                          'font-style': 'bold',
+                          'border': '1px solid black',
+                          'width': '150px'
                         });
 
-   $(".bouncex-btn").find("div").css({   "width": "150px",
-                                        "height": "50px",
-                                       "display": "inline"
-                                     });
-
-  $("#bouncex-close").css({"background-color":"red"});
-  $("#bouncex-cart").css({"background-color":"green"});
+  $(".bouncex-btn").find("a").css("color", "white");
 
 };
 
 var createButtons = function($content){
   var buttons  = $("<div>");
-  var cartBTN  = $("<a>");
-  var closeBTN = $("<a>"); // I might be breaking the rules of Markup with this
+  var cartBTN  = $("<div>");
+  var closeBTN = $("<div>"); // I might be breaking the rules of Markup with this
 
   buttons.attr("id", "bouncex-buttons");
 
-  closeBTN.html('<div>Close</div>');
-  closeBTN.find("div").attr("id", "bouncex-close")
-  closeBTN.attr("href", "#");
+  closeBTN.html('<a href="#">CLOSE</a>');
+  closeBTN.attr("id", "bouncex-close")
   closeBTN.addClass("bouncex-btn");
-  closeBTN.click(function(e){
+  closeBTN.find("a").click(function(e){
     e.preventDefault();
     $content.parent().remove();
   });
 
-  cartBTN.html('<div>Cart</div>');
-  cartBTN.find("div").attr("id", "bouncex-cart");
-  cartBTN.attr("href", "/cart");
+  cartBTN.html('<a href="/cart">CART</a>');
+  cartBTN.attr("id", "bouncex-cart");
   cartBTN.addClass( "bouncex-btn");
 
 
@@ -92,7 +95,7 @@ var populateDiv = function($overlay){
           var images = getImgTags( $(data) );
           var price  = $("<p>");
 
-          price.text( "$" + cy.VALUE );// modify for different currencies. cy is a var in hompage
+          price.text( "Just $" + cy.VALUE );// modify for different currencies. cy is a var in hompage
           content.attr( "id", "bouncex"); // for debugging
 
           imageDiv.attr("id", "bouncex-images");

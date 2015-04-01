@@ -25,7 +25,7 @@ Copy and paste the code into your browser's javascript console, then run the com
 
 generateOverlay()
 
-# The Apporach
+# The Approach
 
 My initial approach was to dig through the site's source to see where the internal resources were coming from. I was specifically looking for any AJAX calls to internal APIs so that I could pull the content from the cart page and parse it. Some elements were available though and I did burn a lot of time trying to analyze the initialization methods in their WebEvent.js file. For time's sake I'm going to stick with the AJAX call method and if time allows I'll attempt to load the cart contents using the converse page's methods.
 

@@ -11,21 +11,31 @@ var getImgTags = function($cart){
 var createButtons = function($content){
   var buttons  = $("<div>");
   var cartBTN  = $("<a>");
-  var closeBTN = $("<div>"); // edit this
+  var closeBTN = $("<a>"); // I might be breaking the rules of Markup with this
 
-  closeBTN.attr("id", "bouncexClose")
-  closeBTN.text("Close");
+  buttons.attr("id", "bouncex-buttons");
 
-  cartBTN.html('<div id="bouncexCart">Cart</div>');
+  closeBTN.html('<div>Close</div>');
+  closeBTN.attr("id", "bouncex-close")
+  closeBTN.attr("href", "#");
+  closeBTN.click(function(e){
+    e.preventDefault();
+    $content.parent().remove();
+  });
+
+  cartBTN.html('<div>Cart</div>');
+  cartBTN.attr("id", "bouncex-cart");
   cartBTN.attr("href", "/cart");
 
-  closeBTN.addClass("bounceEX-BTN");
-  cartBTN.addClass( "bounceEX-BTN");
+  closeBTN.attr("id", "bouncex-btn"); // specificity issues here, so i'm using id vs class
+  cartBTN.attr( "id", "bouncex-btn");
 
   styleButtons();
 
-  $content.append( closeBTN );
-  $content.append( cartBTN );
+  buttons.append( closeBTN );
+  buttons.append( cartBTN );
+
+  $content.append( buttons );
 };
 
 var styleOverlay = function($div){
@@ -48,18 +58,24 @@ var styleContent = function($content){
                        'text-align': 'center',
                     'border-radius': '5px'
                 });
+
+  $content.find("img").css({ "margin": "0 20px"
+
+
+                           });
 };
 
 var styleButtons = function(){
-  $(".bounceEX-BTN").css({  "width":"25%",
-                            "height":"50%"
+  $("#bouncex-btn").css({  "width":"25%",
+                            "height":"50%",
+                            "display":"inline"
 
 
 
                         });
 
-  $("#bouncexClose").css({"background-color":"red"});
-  $("#bouncexCart").css({"background-color":"green"});
+  $("#bouncex-close").css({"background-color":"red"});
+  $("#bouncex-cart").css({"background-color":"green"});
 
 };
 

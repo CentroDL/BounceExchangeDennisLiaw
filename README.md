@@ -32,6 +32,6 @@ My initial approach was to dig through the site's source to see where the intern
 
 BONUS:
 
-There's a variable `cy`, most likely a cookie, that identifies users as a guest. I 1. can just add a check for it in the same boolean that check if there's two+ items in the cart.
+1. There's a variable `cy`, most likely a cookie, that identifies users as a guest. I  can just add a check for it in the same boolean that check if there's two+ items in the cart.
 
 2. The code that decrpyts the session cookie is in the site's source. It also gives you the items in your cart. One could use it in place of an AJAX call.

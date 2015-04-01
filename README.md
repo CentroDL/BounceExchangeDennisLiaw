@@ -21,9 +21,10 @@ Hello Bouncee Exchange! This is a solution to the code challenge Angela sent me.
 
 # To Run
 
-Copy and paste the code into your browser's javascript console, then run the command:
+1. Go to the www.converse.com and add at least 2 items to your cart.
+2. Copy and paste the code into your browser's javascript console, then run the command:
 
-generateOverlay()
+	`generateOverlay()`
 
 # The Approach
 

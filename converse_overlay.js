@@ -60,7 +60,7 @@ var styleButtons = function(){
 var createButtons = function($content){
   var buttons  = $("<div>");
   var cartBTN  = $("<div>");
-  var closeBTN = $("<div>"); // I might be breaking the rules of Markup with this
+  var closeBTN = $("<div>");
 
   buttons.attr("id", "bouncex-buttons");
 

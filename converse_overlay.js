@@ -9,9 +9,9 @@
   };
 
   var styleOverlay = function($div){
-    $div.css({ 'background-color': 'rgba(0,0,0,0.5)',
+    $div.css({ 'background-color': 'rgba(0,0,0,0.75)',
                        'position': 'fixed',
-                        'z-index': '1000',
+                        'z-index': '10000', //header has a z-index of 9999...
                           'width': '100%',
                          'height': '100%'
               });
@@ -30,6 +30,15 @@
                   });
   };
 
+  var styleButtons = function(){
+        $("bounceEX-BTN").css({  "width":"25%",
+                                 "height":"50%"
+
+
+
+                              });
+  };
+
 
   var populateDiv = function($overlay){
     $.ajax( {      url: "/cart",
@@ -40,6 +49,14 @@
             var content = $("<div>");
             var images = getImgTags( $(data) );
             var price  = $("<p>");
+            var closeBTN = $("<div>");
+            var cartBTN = $("<a>");
+
+            closeBTN.attr("id", "bouncexClose")
+            cartBTN.html('<div id="bouncexCart"></div>');
+
+            closeBTN.addClass("bounceEX-BTN");
+            cartBTN.addClass( "bounceEX-BTN");
 
             price.text( "$" + cy.VALUE );// modify for different currencies. cy is a var in hompage
             content.attr( "id", "bouncex"); // for debugging
@@ -48,6 +65,7 @@
             content.append( price );
             $overlay.append( content);
 
+            styleButtons();
             styleOverlay( $overlay );
             styleContent( content );
 

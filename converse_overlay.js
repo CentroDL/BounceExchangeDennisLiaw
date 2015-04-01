@@ -8,35 +8,6 @@ var getImgTags = function($cart){
   return $cart.find( ".item-image img"); // can change the search param as needed if client changes layout
 };
 
-var createButtons = function($content){
-  var buttons  = $("<div>");
-  var cartBTN  = $("<a>");
-  var closeBTN = $("<a>"); // I might be breaking the rules of Markup with this
-
-  buttons.attr("id", "bouncex-buttons");
-
-  closeBTN.html('<div>Close</div>');
-  closeBTN.attr("id", "bouncex-close")
-  closeBTN.attr("href", "#");
-  closeBTN.click(function(e){
-    e.preventDefault();
-    $content.parent().remove();
-  });
-
-  cartBTN.html('<div>Cart</div>');
-  cartBTN.attr("id", "bouncex-cart");
-  cartBTN.attr("href", "/cart");
-
-  closeBTN.attr("id", "bouncex-btn"); // specificity issues here, so i'm using id vs class
-  cartBTN.attr( "id", "bouncex-btn");
-
-  styleButtons();
-
-  buttons.append( closeBTN );
-  buttons.append( cartBTN );
-
-  $content.append( buttons );
-};
 
 var styleOverlay = function($div){
   $div.css({ 'background-color': 'rgba(0,0,0,0.75)',
@@ -56,29 +27,59 @@ var styleContent = function($content){
                               'top': '50%',
                         'transform': 'translateY(-50%)',
                        'text-align': 'center',
-                    'border-radius': '5px'
+                    'border-radius': '5px',
+                          'padding': '15px'
                 });
-
-  $content.find("img").css({ "margin": "0 20px"
-
-
-                           });
 };
 
+var styleImages = function(){};
+
 var styleButtons = function(){
-  $("#bouncex-btn").css({  "width":"25%",
-                            "height":"50%",
-                            "display":"inline"
-
-
-
+  $("#bouncex-buttons").css({ 'height': '150px'});
+  $(".bouncex-btn").css({  "width":"150%",
+                          "height": "150%",
+                         "display": "inline",
+                          "margin": "20px 15px"
                         });
+
+   $(".bouncex-btn").find("div").css({   "width": "150px",
+                                        "height": "50px",
+                                       "display": "inline"
+                                     });
 
   $("#bouncex-close").css({"background-color":"red"});
   $("#bouncex-cart").css({"background-color":"green"});
 
 };
 
+var createButtons = function($content){
+  var buttons  = $("<div>");
+  var cartBTN  = $("<a>");
+  var closeBTN = $("<a>"); // I might be breaking the rules of Markup with this
+
+  buttons.attr("id", "bouncex-buttons");
+
+  closeBTN.html('<div>Close</div>');
+  closeBTN.find("div").attr("id", "bouncex-close")
+  closeBTN.attr("href", "#");
+  closeBTN.addClass("bouncex-btn");
+  closeBTN.click(function(e){
+    e.preventDefault();
+    $content.parent().remove();
+  });
+
+  cartBTN.html('<div>Cart</div>');
+  cartBTN.find("div").attr("id", "bouncex-cart");
+  cartBTN.attr("href", "/cart");
+  cartBTN.addClass( "bouncex-btn");
+
+
+  buttons.append( closeBTN );
+  buttons.append( cartBTN );
+
+  $content.append( buttons );
+
+};
 
 var populateDiv = function($overlay){
   $.ajax( {      url: "/cart",
@@ -87,23 +88,29 @@ var populateDiv = function($overlay){
           }
        ).success( function(data){
           var content = $("<div>");
+          var imageDiv = $("<div>");
           var images = getImgTags( $(data) );
           var price  = $("<p>");
 
           price.text( "$" + cy.VALUE );// modify for different currencies. cy is a var in hompage
           content.attr( "id", "bouncex"); // for debugging
 
-          content.append( images );
+          imageDiv.attr("id", "bouncex-images");
+          imageDiv.append( images );
+
+          content.append( imageDiv );
           content.append( price );
 
           $overlay.append( content);
+          createButtons( content );
+
+
+
+          $('body').append( $overlay );
 
           styleOverlay( $overlay );
           styleContent( content );
-
-          createButtons( content );
-
-          $('body').append( $overlay );
+          styleButtons();
 
           console.log("SUCCESS!");
        }).fail( function(error){

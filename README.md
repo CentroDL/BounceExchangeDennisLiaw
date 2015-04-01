@@ -1,6 +1,6 @@
 # Converse Ad Overlay
 
-Hello Bouncee Exchange! This is a solution to the code challenge Angela sent me. Below is the prompt for the problem:
+Hello Bounce Exchange! This is a solution to the code challenge Angela sent me for the integrations engineer opening. Below is the prompt for the problem:
 
 > Go to converse.com and add at least 2 products to your cart. Then return to the home page.
 >

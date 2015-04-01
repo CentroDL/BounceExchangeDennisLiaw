@@ -5,13 +5,13 @@ var twoOrMoreItems = function(){
 };
 
 var getImgTags = function($cart){
-  return $cart.find( ".item-image img"); //can change the search param as needed if client changes layout
+  return $cart.find( ".item-image img"); // can change the search param as needed if client changes layout
 };
 
 var createButtons = function($content){
-
-  var closeBTN = $("<div>");
-  var cartBTN = $("<a>");
+  var buttons  = $("<div>");
+  var cartBTN  = $("<a>");
+  var closeBTN = $("<div>"); // edit this
 
   closeBTN.attr("id", "bouncexClose")
   closeBTN.text("Close");
@@ -31,7 +31,7 @@ var createButtons = function($content){
 var styleOverlay = function($div){
   $div.css({ 'background-color': 'rgba(0,0,0,0.75)',
                      'position': 'fixed',
-                      'z-index': '10000', //header has a z-index of 9999...
+                      'z-index': '10000', // header has a z-index of 9999...
                         'width': '100%',
                        'height': '100%'
             });
@@ -99,7 +99,7 @@ var generateOverlay= function(){
   if( twoOrMoreItems() ){
     var overlay = $("<div>");
     overlay.attr( "id", "overlay"); // debug purposes
-    populateDiv(overlay); //AJAX the cart page and populate the div
+    populateDiv(overlay); // AJAX request the cart page and populate the div
   } else {
     alert("Not enough items to trigger overlay!");
   }

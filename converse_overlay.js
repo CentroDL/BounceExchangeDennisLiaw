@@ -39,18 +39,18 @@ var styleContent = function($content){
 var styleImages = function(){}; //stub just in case
 
 var styleButtons = function(){
-  $(".bouncex-btn").css({    'margin': '20px 20px',
+  $(".bouncex-btn").css({         'margin': '20px 20px',
                           'vertical-align': 'middle',
-                          'height': '25px',
-                          'display': 'inline-block',
-                          'padding': '15px',
-                          'font-size': '24px',
-                          'text-align': 'center',
-                          'color': 'white',
-                          'background-color': 'black',
-                          'font-style': 'bold',
-                          'border': '1px solid black',
-                          'width': '150px'
+                                  'height': '25px',
+                                 'display': 'inline-block',
+                                 'padding': '15px',
+                               'font-size': '24px',
+                              'text-align': 'center',
+                                   'color': 'white',
+                        'background-color': 'black',
+                              'font-style': 'bold',
+                                  'border': '1px solid black',
+                                   'width': '150px'
                         });
 
   $(".bouncex-btn").find("a").css("color", "white");

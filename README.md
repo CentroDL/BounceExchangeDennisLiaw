@@ -30,3 +30,8 @@ Hello Bouncee Exchange! This is a solution to the code challenge Angela sent me.
 
 My initial approach was to dig through the site's source to see where the internal resources were coming from. I was specifically looking for any AJAX calls to internal APIs so that I could pull the content from the cart page and parse it. Some elements were available though and I did burn a lot of time trying to analyze the initialization methods in their WebEvent.js file. For time's sake I'm going to stick with the AJAX call method and if time allows I'll attempt to load the cart contents using the converse page's methods.
 
+BONUS:
+
+There's a variable `cy`, most likely a cookie, that identifies users as a guest. I 1. can just add a check for it in the same boolean that check if there's two+ items in the cart.
+
+2. The code that decrpyts the session cookie is in the site's source. It also gives you the items in your cart. One could use it in place of an AJAX call.

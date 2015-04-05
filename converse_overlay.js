@@ -50,10 +50,18 @@ var styleButtons = function(){
                         'background-color': 'black',
                               'font-style': 'bold',
                                   'border': '1px solid black',
-                                   'width': '150px'
+                                   'width': '150px',
+                                  'cursor': 'pointer'
                         });
 
-  $(".bouncex-btn").find("a").css("color", "white");
+  $(".bouncex-btn").hover(function(e){
+    $(e.target).css({"background-color":"white",
+      "color":"black"})
+  },
+  function(e){
+    $(e.target).css({"background-color":"black",
+      "color":"white"})
+  });
 
 };
 
@@ -64,18 +72,20 @@ var createButtons = function($content){
 
   buttons.attr("id", "bouncex-buttons");
 
-  closeBTN.html('<a href="#">CLOSE</a>');
+  closeBTN.text('Close');
   closeBTN.attr("id", "bouncex-close")
   closeBTN.addClass("bouncex-btn");
-  closeBTN.find("a").click(function(e){
+  closeBTN.click(function(e){
     e.preventDefault();
     $content.parent().remove();
   });
 
-  cartBTN.html('<a href="/cart">CART</a>');
+  cartBTN.text("Cart");
   cartBTN.attr("id", "bouncex-cart");
   cartBTN.addClass( "bouncex-btn");
-
+  cartBTN.click( function(e){
+    window.location.href = '/cart';
+  });
 
   buttons.append( closeBTN );
   buttons.append( cartBTN );
